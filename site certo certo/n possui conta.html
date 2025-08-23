@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Conta</title>
+  <style>
+    body {
+      font-family:Arial, Helvetica, sans-serif
+     background: url("fundo.jpg");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color:purple;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .checkbox-container {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color:purple;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-top: 24px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #16315c;
+    }
+
+    nav {
+      width: 100%;
+      background-color: #ffffffcc;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position:fixed;
+      top: 0;
+      z-index: 1000;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .logo {
+      height: 80px;
+    }
+
+    .menu-links {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      margin-top: -40px;
+    }
+
+    .menu-links a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: purple;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .menu-links a:hover {
+      color: #f57c00;
+    }
+  </style>
+</head>
+<body>
+   <nav>
+    <img src="logo_sem_fundo (1).png" alt="Logo Nexpharm" class="logo">
+    <div class="menu-links">
+      <a href="carrosel.html">Início</a>
+      <a href="parte dos produtos.html">Produtos</a>
+      <a href="SUPORTE.html">Suporte</a>
+    </div>
+  </nav>
+  s
+  <div class="form-container">
+    <h2>Criar Conta</h2>
+    <form action="#" method="post">
+      <label for="email">Nome</label>
+      <input type="email" id="email" name="email" required>
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" required>
+
+      <label for="confirmar-senha">Confirmar Senha</label>
+      <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+
+      <label for="data-nascimento">Data de Nascimento</label>
+      <input type="date" id="data-nascimento" name="data-nascimento" required>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="nao-robo" name="nao-robo" required>
+        <label for="nao-robo">Não sou um robô</label>
+      </div>
+
+      <button type="submit">Criar Conta</button>
+    </form>
+  </div>
+</body>
+</html>

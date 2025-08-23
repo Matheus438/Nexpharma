@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexpharm Produtos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9fb;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #ff8c00, #6a0dad);
+      padding: 20px 40px;
+      color: white;
+    }
+
+    .logo {
+      height: 70px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .btn-login {
+      background-color: white;
+      color: orangered;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-login:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 30px auto;
+      max-width: 600px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px 0 0 8px;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      padding: 12px 20px;
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Produtos */
+    .produtos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0 40px 60px;
+    }
+
+    .produto {
+      background-color: white;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .produto img {
+      max-width: 100%;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    .produto h2 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+
+    .produto p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .produto button {
+      background-color: orangered;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Carrinho */
+    #cart-button {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      border-radius: 10px 0 0 10px;
+      cursor: pointer;
+      font-size: 24px;
+      z-index: 1001;
+    }
+
+    #cart-container {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100%;
+      background-color: white;
+      border-left: 2px solid #ccc;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+
+    #cart-container.open {
+      right: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .cart-item img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .remove-btn {
+      background: orangered;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    #checkout-btn {
+      margin-top: 20px;
+      width: 100%;
+      background: purple;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+    .mid{
+      text-align: center;
+      color: darkviolet;
+
+    }
+    h2{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="logo_sem_fundo (1).png" alt="Logo Nexpharm" class="logo">
+    <nav>
+      <a href="carrosel.html">Início</a>
+      <a href="parte dos produtos.html">Produtos</a>
+      <a href="SUPORTE.html">Suporte</a>
+    </nav>
+    <button class="btn-login" onclick="location.href='tela de inicio.html'">Entrar</button>
+  </header>
+
+  <!-- BARRA DE PESQUISA -->
+  <div class="search-bar">
+    <input type="text" placeholder="Pesquisar...">
+    <button>Buscar</button>
+  </div>
+
+  <!-- PRODUTOS -->
+   <h1 class="mid"> Whey </h1>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto para por 3.png" alt="Whey">
+      <h2>Whey Growth 80%</h2>
+      <p>R$ 124,90</p>
+      <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto whey2.jpg" alt="Whey">
+      <h2>Whey Protein 900g</h2>
+      <p>R$ 200,10</p>
+      <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto whey1.jpg" alt="whey">
+      <h2>Whey BYo pure</h2>
+      <p> R$ 98,90</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <!-- Adicione mais produtos aqui conforme necessário -->
+  </section>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto whey3.jpg" alt="Whey">
+      <h2>Whey Drink Black Skulls</h2>
+      <p> R$ 35,99</p>
+      <button class="comprar">🛒 Comprar</button>
+
+    </div>
+    <div class="produto">
+      <img src="foto whey4.jpg" alt="Whey">
+      <h2>Whey Pro Nabol</h2>
+      <p> R$ 110,90</p>
+       <button class="comprar">🛒 Comprar</button>
+
+    </div>
+    <div class="produto">
+      <img src="foto par por 5.jpg" alt="Whey">
+      <h2>Growth Protein Bar</h2>
+      <p> R$ 10,90</p>
+      <button class="comprar">🛒 Comprar</button>
+    </div>
+  </section>
+  <h1 class="mid"> Creatina</h1>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto creatina 4.jpg" alt="Whey">
+      <h2> Creatina Hardcore</h2>
+      <p> R$ 65,90</p>
+      <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto creatina 6.jpg" alt="Whey">
+      <h2> Nutrata Creatina </h2>
+      <p> R$ 60,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto creatina 7.jpg" alt="">
+      <h2> Creatina Growth </h2>
+      <p> R$ 62,99</p>
+       <button class="comprar">🛒 Comprar</button>
+  </section>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto creatina2.jpg" alt="">
+      <h2> Creatina Dux </h2>
+      <p> R$ 62,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto creatina3.jpg"">
+      <h2> Creatina Black skulls </h2>
+      <p> R$ 68,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto creatina10.png" alt="">
+      <h2> Creatina Glyco </h2>
+      <a href="area de compra.html"> Clique aqui</a>
+      <p> R$ 62,99</p>
+       <button class="comprar">🛒 Comprar</button>
+
+  </section>
+  <H1 class="mid">Pré Treino</H1>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto pre3.jpg" alt="">
+      <h2> Pre Treino BOPE </h2>
+      <p> R$ 50,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto pre4.jpg" alt="">
+      <h2> Pré Treino psichote </h2>
+      <p> R$ 645,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto pre treino.jpg" alt="">
+      <h2> Pré Treino Haze </h2>
+      <p> R$ 48,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+  </section>
+  <section class="produtos-container">
+    <div class="produto">
+      <img src="foto pre5.jpg" alt="">
+      <h2> Pré Treino Psicho Killer </h2>
+      <p> R$ 50,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto pre6.jpg" alt="">
+      <h2> Pré Treino Insane Original  </h2>
+      <p> R$ 62,99</p>
+       <button class="comprar">🛒 Comprar</button>
+    </div>
+    <div class="produto">
+      <img src="foto pre7.jpg" alt="">
+      <h2> Pré Treino Dux </h2>
+      <p> R$ 62,99</p>
+       <button class="comprar">🛒 Comprar</button>
+  </section>
+
+
+  <!-- BOTÃO DO CARRINHO -->
+  <div id="cart-button">🛒</div>
+
+  <!-- CONTEÚDO DO CARRINHO -->
+  <div id="cart-container">
+    <h2>Seu Carrinho</h2>
+    <div id="cart-items"></div>
+    <p id="empty-cart">Seu carrinho está vazio.</p>
+    <p id="total-price"><strong>Total:</strong> R$ 0,00</p>
+    <button id="checkout-btn">Finalizar Compra</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cart = document.getElementById("cart-container");
+      const cartButton = document.getElementById("cart-button");
+      const cartItems = document.getElementById("cart-items");
+      const totalPriceElement = document.getElementById("total-price");
+      const emptyCart = document.getElementById("empty-cart");
+      const checkoutBtn = document.getElementById("checkout-btn");
+
+      let total = 0;
+
+      cartButton.addEventListener("click", () => {
+        cart.classList.toggle("open");
+      });
+
+      function formatPrice(value) {
+        return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      }
+
+      function updateTotal() {
+        totalPriceElement.innerHTML = "<strong>Total:</strong> " + formatPrice(total);
+      }
+
+      document.querySelectorAll(".comprar").forEach(button => {
+        button.addEventListener("click", function () {
+          const card = this.closest(".produto");
+          const title = card.querySelector("h2").textContent;
+          const price = parseFloat(card.querySelector("p").textContent.replace("R$", "").replace(",", "."));
+          const imgSrc = card.querySelector("img").src;
+
+          const item = document.createElement("div");
+          item.className = "cart-item";
+          item.innerHTML = `
+            <img src="${imgSrc}" alt="produto">
+            <span style="flex:1; margin-left: 10px;">${title}</span>
+            <button class="remove-btn">Remover</button>
+          `;
+
+          item.querySelector(".remove-btn").addEventListener("click", function () {
+            item.remove();
+            total -= price;
+            updateTotal();
+            if (cartItems.children.length === 0) {
+              emptyCart.style.display = "block";
+              checkoutBtn.style.display = "none";
+            }
+          });
+
+          cartItems.appendChild(item);
+          total += price;
+          updateTotal();
+
+          emptyCart.style.display = "none";
+          checkoutBtn.style.display = "block";
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comprar CREATINE GLYCO</title>
+  <style>
+    body {
+      background-image: url("back.jfif");
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      width: 100%;
+      height: 100px;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header a:hover {
+      color: lightsalmon;
+    }
+
+    .container-compra {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+
+    .imagem-produto {
+      width: 500px;
+      border: 4px solid rosybrown;
+      border-radius: 10px;
+      background-color: white;
+      padding: 10px;
+    }
+
+    .info-produto {
+      background: linear-gradient(to bottom, #fff8f3, #ffe0d4);
+      border: 4px solid rosybrown;
+      border-radius: 15px;
+      width: 500px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .info-produto:hover {
+      transform: scale(1.01);
+    }
+
+    .info-produto h1 {
+      font-size: 30px;
+      color: orangered;
+      margin-bottom: 10px;
+    }
+
+    .info-produto p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .info-produto label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    .info-produto input {
+      padding: 8px;
+      font-size: 16px;
+      width: 100px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+
+    .info-produto .total {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .info-produto button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background-color: orangered;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .info-produto button:hover {
+      background-color: darkorange;
+    }
+
+    .formas-pagamento {
+      margin-top: 30px;
+      background-color: #fff4ee;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #e5b7a6;
+    }
+
+    .formas-pagamento h3 {
+      margin-bottom: 10px;
+      color: #d95f00;
+      font-size: 18px;
+    }
+
+    .formas-pagamento ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 16px;
+    }
+
+    .formas-pagamento li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .especificacoes {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      padding: 30px;
+      background-color: #fffdfb;
+      border: 2px solid rosybrown;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .especificacoes h2 {
+      color: orangered;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .especificacoes ul {
+      list-style: square;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    .especificacoes li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="carrosel.html">INÍCIO</a>
+    <a href="parte dos produtos.html">PRODUTOS</a>
+    <a href="cadastro.html">SUPORTE</a>
+    <a href="sobre.html">SOBRE</a>
+  </header>
+
+  <div class="container-compra">
+    <img src="foto creatina10.png" alt="CREATINE GLYCO" class="imagem-produto">
+
+    <div class="info-produto">
+      <h1>CREATINE GLYCO</h1>
+      <p><strong>Descrição:</strong> Creatina de alta pureza com absorção otimizada para aumento de força e resistência muscular. Ideal para quem busca desempenho nos treinos com resultados rápidos.</p>
+      <p><strong>Preço unitário:</strong> R$ <span id="preco-produto">89,90</span></p>
+
+      <label for="quantidade">Quantidade:</label>
+      <input type="number" id="quantidade" value="1" min="1">
+
+      <p class="total">Total: R$ <span id="preco-total">89,90</span></p>
+
+      <button onclick="comprar()">Comprar agora</button>
+
+      <div class="formas-pagamento">
+        <h3>Formas de pagamento:</h3>
+        <ul>
+          <li>💳 Cartão de Crédito (Visa, MasterCard, Elo, Amex)</li>
+          <li>📄 Boleto Bancário</li>
+          <li>⚡ Pix com 5% de desconto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="especificacoes">
+    <h2>Especificações do Produto</h2>
+    <ul>
+      <li>Marca: GlycoPower</li>
+      <li>Tipo: Monohidratada micronizada</li>
+      <li>Peso: 300g</li>
+      <li>Porção: 3g (rende 100 doses)</li>
+      <li>Indicação: Ganho de força, recuperação muscular</li>
+      <li>Certificação: ANVISA e ISO 9001</li>
+      <li>Recomendações: Tomar com água após o treino</li>
+    </ul>
+  </div>
+
+  <script>
+    const precoUnitario = 89.90;
+
+    document.getElementById("quantidade").addEventListener("input", function () {
+      const quantidade = parseInt(this.value) || 1;
+      const total = quantidade * precoUnitario;
+      document.getElementById("preco-total").textContent = total.toFixed(2).replace(".", ",");
+    });
+
+    function comprar() {
+      const quantidade = document.getElementById("quantidade").value;
+      alert(`Você comprou ${quantidade} unidade(s) de CREATINE GLYCO. Obrigado pela sua compra!`);
+    }
+  </script>
+
+</body>
+</html>
