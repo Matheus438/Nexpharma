@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comprar Whey Protein Growth 80%</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #fefefe; margin: 0; padding: 0; }
+    .container { max-width: 1000px; margin: auto; padding: 20px; display: flex; gap: 40px; }
+    .imagem { flex: 1; }
+    .imagem img { width: 100%; border-radius: 10px; border: 2px solid #ccc; }
+    .info { flex: 1; background-color: #fff8f3; border: 2px solid rosybrown; border-radius: 15px; padding: 25px; }
+    .info h1 { color: orangered; }
+    .info p { margin: 10px 0; }
+    .total { font-weight: bold; font-size: 18px; }
+    input { padding: 5px; width: 60px; }
+    button { margin-top: 20px; padding: 10px 20px; background-color: orangered; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    .formas-pagamento { margin-top: 30px; padding: 15px; background-color: #fff4ee; border-radius: 10px; border: 1px solid #e5b7a6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="imagem">
+      <img src="../imagens/foto para por 3.png" alt="Whey Protein Growth 80%">
+    </div>
+    <div class="info">
+      <h1>Whey Protein Growth 80%</h1>
+      <p>Whey Protein Growth 80% de alto valor biológico para ganho de massa muscular.</p>
+      <p><strong>Preço unitário:</strong> R$ <span id="preco">124,90</span></p>
+      <label>Quantidade: <input type="number" id="quantidade" value="1" min="1"></label>
+      <p class="total">Total: R$ <span id="total">124,90</span></p>
+      <button onclick="comprar()">Comprar agora</button>
+
+      <div class="formas-pagamento">
+        <h3>Formas de pagamento:</h3>
+        <ul>
+          <li>💳 Cartão de Crédito (Visa, MasterCard, Elo, Amex)</li>
+          <li>📄 Boleto Bancário</li>
+          <li>⚡ Pix com 5% de desconto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const preco = parseFloat("124,90".replace(",", "."));
+    document.getElementById("quantidade").addEventListener("input", function () {
+      const qtd = parseInt(this.value) || 1;
+      const total = (qtd * preco).toFixed(2).replace(".", ",");
+      document.getElementById("total").textContent = total;
+    });
+
+    function comprar() {
+      const qtd = document.getElementById("quantidade").value;
+      alert("Você comprou " + qtd + " unidade(s) de Whey Protein Growth 80%. Obrigado!");
+    }
+  </script>
+</body>
+</html>
