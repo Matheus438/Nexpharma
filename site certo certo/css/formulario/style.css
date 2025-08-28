@@ -47,9 +47,16 @@ a {
 textarea {
   resize: none; }
 
-.titulo{
-  margin-left: 15%;
-  margin-top: 5%;
+.perfil{
+  border-radius: 40px;
+  margin-left: 10px;
+  width: 160px;
+  margin-top: 10px;
+  height: 110px;
+}
+.produto{
+  width: 150px;
+  margin-top: -10px;
 }
 
 select {
