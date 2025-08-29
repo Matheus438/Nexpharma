@@ -1,0 +1,9 @@
+.bg-roxo{
+    background-color: rgb(106, 13, 173);
+    color: white;
+}
+
+.bg-roxo:hover{
+     background-color:rgb(255, 140, 0);
+    color: white;
+}
