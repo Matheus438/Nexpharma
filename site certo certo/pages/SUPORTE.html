@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <style>
 .suporte-container {
   background-color: #f9f9f9;
@@ -62,6 +63,30 @@
     </style>
 </head>
 <body>
+  <nav class="navbar sticky-top  navbar-expand-lg navbar-dark"
+      style="background: linear-gradient(90deg, rgb(255, 140, 0), rgb(106, 13, 173));">
+      <div class="container">
+        <a class="navbar-brand" href="../pages/home.html">
+          <img src="../imagens/logo-completa.png" alt="Logo" height="60">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link active fs-5" href="../pages/home.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link fs-5" href="../pages/produtos.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link fs-5" href="../pages/SUPORTE.html">Contato</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+
+          </div>
+        </div>
+        <button type="button" class="btn btn-light" onclick="location.href='../pages/Login.html'">Entrar</button>
+      </div>
+    </nav>
   <section class="suporte-container">
   <h2>Fale com o Suporte</h2>
   <p>Está com dúvidas sobre seu pedido, pagamento ou produtos? Preencha o formulário abaixo ou entre em contato por outro canal.</p>
