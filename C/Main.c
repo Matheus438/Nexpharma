@@ -5,8 +5,16 @@ typedef struct{
 
 }produtos;
 
-void cadastro(){
-    
+typedef struct{
+
+}clientes;
+
+void gerenciarClientes(){
+
+}
+
+void relatoriosProduto(){
+
 }
 
 main(){
