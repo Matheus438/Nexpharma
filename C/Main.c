@@ -1,556 +1,580 @@
 #include <stdio.h>
 #include <string.h>
 #include <windows.h>
+
 #define TF 10
-//[]
+
 typedef struct
 {
-    char nome[50], email[50], cpf[11], tel[14], password[20];
-} funcionarios;
+    char nome[50], email[50], cpf[12], tel[15], password[20];
+} clientes;
 
 typedef struct
 {
     char nome_produto[50], descricao[50];
     int qtd, cod;
     float valor;
-
 } produtos;
 
 typedef struct
 {
-    char nome[50], email[50], endereco[50], cpf[11], password[20], tel[14];
-} clientes;
+    char nome[50], email[50], cpf[12], tel[15], password[20];
+} funcionarios;
 
+// Vetores globais
 clientes vet_clientes[TF];
 produtos vet_produtos[TF];
 funcionarios vet_funcionarios[TF];
-int contador = 0;
-// menu
+
+int cont_clientes = 0, cont_produtos = 0, cont_funcionarios = 0;
+
+// ------------------ MENU ------------------
 void menu()
 {
     printf("-------------------MENU-------------------\n");
-    printf("\n1 - Cadastrar Cliente");      // CERTO
-    printf("\n2 - Listar Clientes");        // CERTO
-    printf("\n3 - Pesquisar Cliente");      // CERTO
-    printf("\n4 - Excluir Cliente");        // CERTO B
-    printf("\n5 - Cadastrar Produto");      // CERTO
-    printf("\n6 - Pesquisar Produto");      // CERTO
-    printf("\n7 - Listar Produto");         // CERTO
-    printf("\n8 - Excluir Produto");        // EM ANDAMENTO
-    printf("\n9 - Comprar Produto");        // EM ANDAMENTO
-    printf("\n10 - Cadastrar Funcionario"); // CERTO
-    printf("\n11 - Listar Funcionario");    // CERTO
-    printf("\n12 - Pesquisar Funcionario"); // CERTO
-    printf("\n13 - Excluir Funcionario");   // CERTO B
-    printf("\n14 - Finalizar Programa");    // CERTO
+    printf("1 - Cadastrar Cliente\n");
+    printf("2 - Listar Clientes\n");
+    printf("3 - Pesquisar Cliente\n");
+    printf("4 - Excluir Cliente\n");
+    printf("5 - Cadastrar Produto\n");
+    printf("6 - Pesquisar Produto\n");
+    printf("7 - Listar Produto\n");
+    printf("8 - Excluir Produto\n");
+    printf("9 - Comprar Produto\n");
+    printf("10 - Cadastrar Funcionario\n");
+    printf("11 - Listar Funcionario\n");
+    printf("12 - Pesquisar Funcionario\n");
+    printf("13 - Excluir Funcionario\n");
+    printf("14 - Finalizar Programa\n");
 }
-// 1
-void cadastarClientes()
+
+// ------------------ CLIENTES ------------------
+
+// 1 - Cadastrar Cliente
+void cadastrarClientes()
 {
     clientes c;
-    int i = 1, j, b;
-    //[]
-    while (i != 2)
+    int i = 1;
+    while (i != 2 && cont_clientes < TF)
     {
-        for (b = 0; b < TF && i != 2; b++)
+        printf("Digite o Nome do cliente: \n");
+        fflush(stdin);
+        gets(c.nome);
+
+        // Email
+        int emailValido = 0;
+        while (!emailValido)
         {
-            printf("Digite o Nome do cliente a ser cadastrado: \n");
-            fflush(stdin);
-            gets(c.nome);
-            printf("Digite o E-mail do cliente a ser cadastrado: \n");
+            printf("Digite o E-mail do cliente: \n");
             fflush(stdin);
             gets(c.email);
-            for (j = 0; j < TF; j++)
+
+            emailValido = 1;
+            int j = 0;
+            while (j < cont_clientes && emailValido)
             {
-                if (strcmp(c.email, vet_clientes[j].email) == 0)
-                {
-                    printf("E-mail ja cadastrado. Tente novamente.\n");
-                    printf("Digite o E-mail do cliente a ser cadastrado: \n");
-                    fflush(stdin);
-                    gets(c.email);
-                    j = -1;
-                }
+                int igual = strcmp(c.email, vet_clientes[j].email) == 0;
+                emailValido = emailValido * !igual;
+                j++;
             }
-            printf("Digite o CPF do cliente a ser cadastrado: \n");
+            if (!emailValido)
+                printf("E-mail ja cadastrado!\n");
+        }
+
+        // CPF
+        int cpfValido = 0;
+        while (!cpfValido)
+        {
+            printf("Digite o CPF do cliente: \n");
             fflush(stdin);
             gets(c.cpf);
-            for (j = 0; j < TF; j++)
-            {
-                if (strcmp(c.cpf, vet_clientes[j].cpf) == 0)
-                {
-                    printf("CPF ja cadastrado no sistema!!!\n");
-                    printf("Digite o CPF do cliente a ser cadastrado: \n");
-                    fflush(stdin);
-                    gets(c.cpf);
-                    j = -1;
-                }
-            }
 
-            printf("Digite o Telefone do cliente a ser cadastrado: \n");
+            cpfValido = 1;
+            int j = 0;
+            while (j < cont_clientes && cpfValido)
+            {
+                int igual = strcmp(c.cpf, vet_clientes[j].cpf) == 0;
+                cpfValido = cpfValido * !igual;
+                j++;
+            }
+            if (!cpfValido)
+                printf("CPF ja cadastrado!\n");
+        }
+
+        // Telefone
+        int telValido = 0;
+        while (!telValido)
+        {
+            printf("Digite o Telefone do cliente: \n");
             fflush(stdin);
             gets(c.tel);
-            // CONFERIR ABAIXO
-            for (j = 0; j < TF; j++){
-                if (strlen(c.tel) < 11 || strlen(c.tel) > 14)
-                {
-                    printf("Telefone invalido. Cadastre como no Exemplo: (99)99999-9999\n");
-                    printf("Digite o Telefone do cliente a ser cadastrado: \n");
-                    fflush(stdin);
-                    gets(c.tel);
-                }
-                else
-                {
-                    if (strcmp(c.tel, vet_clientes[j].tel) == 0)
-                    {
-                        printf("Telefone ja cadastrado. Tente novamente.\n");
-                        printf("Digite o Telefone a ser cadastrado: \n");
-                        fflush(stdin);
-                        gets(c.tel);
-                        j = -1;
-                    }
-                }
+
+            int tamanhoValido = (strlen(c.tel) >= 11 && strlen(c.tel) <= 14);
+            int telefoneDuplicado = 0;
+            int j = 0;
+            while (j < cont_clientes)
+            {
+                telefoneDuplicado += (strcmp(c.tel, vet_clientes[j].tel) == 0);
+                j++;
             }
-            printf("Digite a senha do cliente: ");
-            fflush(stdin);
-            gets(c.password);
 
-            vet_clientes[b] = c;
-            contador += 1;
-            printf("\nCliente Cadastrado com Sucesso.\n");
-
-            printf("\nDeseja cadastrar mais algum cliente?");
-            printf("\n1 - Sim");
-            printf("\n2 - Nao");
-            fflush(stdin);
-            scanf("%d", &i);
+            telValido = tamanhoValido * (telefoneDuplicado == 0);
+            if (!telValido)
+                printf("Telefone invalido ou ja cadastrado.\n");
         }
+
+        printf("Digite a senha do cliente: \n");
+        fflush(stdin);
+        gets(c.password);
+
+        vet_clientes[cont_clientes] = c;
+        cont_clientes++;
+        printf("\nCliente cadastrado com sucesso!\n");
+
+        printf("Deseja cadastrar mais clientes? 1-Sim 2-Nao\n");
+        scanf("%d", &i);
+        fflush(stdin);
     }
 }
-// 2
-int listarClientes()
-{
-    int i, cont = 0;
 
-    for (i = 0; i < contador; i++)
+// 2 - Listar Clientes
+void listarClientes()
+{
+    if (cont_clientes == 0)
+    {
+        printf("\nNenhum cliente cadastrado.\n");
+        return;
+    }
+
+    int i = 0;
+    while (i < cont_clientes)
     {
         printf("\nNome: %s", vet_clientes[i].nome);
         printf("\nTelefone: %s", vet_clientes[i].tel);
         printf("\nEmail: %s", vet_clientes[i].email);
         printf("\nCPF: %s", vet_clientes[i].cpf);
-        printf("\nSenha: %s", vet_clientes[i].password);
-        cont++;
+        printf("\nSenha: %s\n", vet_clientes[i].password);
+        i++;
     }
-    return cont;
 }
-// 3
+
+// 3 - Pesquisar Cliente
 void pesquisarCliente()
 {
-    int i;
     char buscar[12];
-    clientes c;
-    printf("Insira o CPF a ser buscado:\n");
+    int i = 0, encontrado = 0;
+    printf("Digite o CPF do cliente: \n");
     fflush(stdin);
     gets(buscar);
 
-    for (i = 0; i < TF; i++)
+    while (i < cont_clientes)
     {
-        if (strcmp(buscar, vet_clientes[i].cpf) == 0)
+        int igual = strcmp(buscar, vet_clientes[i].cpf) == 0;
+        encontrado += igual;
+
+        if (igual)
         {
-            printf("\nCPF Encontrado\n");
-            printf("\nNome: %s", vet_clientes[i].nome);
-            printf("\nTelefone: %s", vet_clientes[i].tel);
-            printf("\nEmail:%s", vet_clientes[i].email);
-            printf("\nCPF: %s", vet_clientes[i].cpf);
-            printf("\nSenha: %s", vet_clientes[i].password);
+            printf("\nCliente encontrado:\n");
+            printf("Nome: %s\n", vet_clientes[i].nome);
+            printf("Telefone: %s\n", vet_clientes[i].tel);
+            printf("Email: %s\n", vet_clientes[i].email);
+            printf("CPF: %s\n", vet_clientes[i].cpf);
+            printf("Senha: %s\n", vet_clientes[i].password);
         }
-        else
-        {
-            printf("\nCPF nao encontrado.");
-        }
+        i++;
     }
+
+    if (!encontrado)
+        printf("\nCPF nao encontrado.\n");
 }
-// 4
-void excluirCliente(int *cont)
+
+// 4 - Excluir Cliente
+void excluirCliente()
 {
-    int i, j, encontrado = 0;
     char buscar[12];
-    printf("Insira o CPF do cliente que deseja excluir: \n");
+    int i = 0, encontrado = 0;
+    printf("Digite o CPF do cliente que deseja excluir: \n");
     fflush(stdin);
     gets(buscar);
-    for (i = 0; i < *cont; i++)
+
+    while (i < cont_clientes)
     {
-        if (strcmp(buscar, vet_clientes[i].cpf) == 0)
+        int igual = strcmp(buscar, vet_clientes[i].cpf) == 0;
+        encontrado += igual;
+
+        int deslocar = 0;
+        while (deslocar < cont_clientes - i - 1 && igual)
         {
-            encontrado = 1;
-            for (j = i; j < *cont - 1; j++)
-            {
-                vet_clientes[j] = vet_clientes[j + 1];
-            }
-            (*cont)--;
+            vet_clientes[i + deslocar] = vet_clientes[i + deslocar + 1];
+            deslocar++;
         }
+        if (igual)
+            cont_clientes--;
+        i++;
     }
+
     if (!encontrado)
-        printf("\nCliente nao encontrado.");
+        printf("\nCliente nao encontrado.\n");
     else
-    {
-        printf("\nCliente excluido com sucesso");
-        contador--;
-    }
+        printf("\nCliente excluido com sucesso!\n");
 }
-// 5
-void cadastroProduto()
+
+// ------------------ PRODUTOS ------------------
+
+// 5 - Cadastrar Produto
+void cadastrarProduto()
 {
-    int i = 1, j, c = 0;
     produtos p;
-    while (i != 2)
+    int i = 1;
+    while (i != 2 && cont_produtos < TF)
     {
         printf("Digite o codigo do produto: \n");
         scanf("%d", &p.cod);
         fflush(stdin);
-        for (j = 0; j < TF; j++)
+
+        int codigoValido = 1;
+        int j = 0;
+        while (j < cont_produtos)
         {
-            if (p.cod == vet_produtos[j].cod)
-            {
-                printf("Produto ja existente.\n");
-                printf("Digite o codigo do produto: \n");
-                scanf("%d", &p.cod);
-                fflush(stdin);
-                j = -1;
-            }
+            codigoValido = codigoValido * (p.cod != vet_produtos[j].cod);
+            j++;
         }
-        printf("Digite o Nome do produto a ser cadastrado: \n");
+        if (!codigoValido)
+            printf("Produto ja existente!\n");
+
+        printf("Digite o nome do produto: \n");
         gets(p.nome_produto);
         fflush(stdin);
         printf("Digite a descricao: \n");
         gets(p.descricao);
         fflush(stdin);
-        printf("Digite a quantidade de produto em estoque: \n");
+        printf("Digite a quantidade em estoque: \n");
         scanf("%d", &p.qtd);
         fflush(stdin);
-        printf("Digite o valor dos produtos: \n");
+        printf("Digite o valor do produto: \n");
         scanf("%f", &p.valor);
         fflush(stdin);
-        vet_produtos[c] = p; // PODE DAR ERRO
-        c++;                 // PODE DAR ERRO
-        printf("\nProduto Cadastrado com Sucesso.\n");
-        printf("\nDeseja cadastrar mais algum Produto?");
-        printf("\n1 - Sim");
-        printf("\n2 - Nao");
+
+        vet_produtos[cont_produtos] = p;
+        cont_produtos++;
+        printf("\nProduto cadastrado com sucesso!\n");
+
+        printf("Deseja cadastrar mais produtos? 1-Sim 2-Nao\n");
         scanf("%d", &i);
+        fflush(stdin);
     }
 }
-// 6
+
+// 6 - Pesquisar Produto
 void pesquisarProduto()
 {
-    int i;
-    int busca;
-    produtos p;
-    printf("Insira o codigo a ser buscado:\n");
-    fflush(stdin);
+    int busca, i = 0, encontrado = 0;
+    printf("Digite o codigo do produto: \n");
     scanf("%d", &busca);
+    fflush(stdin);
 
-    for (i = 0; i < TF; i++)
+    while (i < cont_produtos)
     {
-        if (busca == vet_produtos[i].cod)
-        {
-            printf("\nProduto Encontrado\n");
-            printf("\nNome: %s", vet_produtos[i].nome_produto);
-            printf("\nCodigo: %d", vet_produtos[i].cod);
-            printf("\nValor: %.2f", vet_produtos[i].valor);
-            printf("\nQuantidade em estoque:%d", vet_produtos[i].qtd);
-        }
-        else
-        {
-            printf("\nProduto nao encontrado.");
-        }
-    }
-}
-// 7
-int listarProduto()
-{
-    int i, cont_p;
+        int igual = busca == vet_produtos[i].cod;
+        encontrado += igual;
 
-    for (i = 0; i < TF; i++)
+        if (igual)
+        {
+            printf("\nProduto encontrado:\n");
+            printf("Codigo: %d\n", vet_produtos[i].cod);
+            printf("Nome: %s\n", vet_produtos[i].nome_produto);
+            printf("Descricao: %s\n", vet_produtos[i].descricao);
+            printf("Quantidade: %d\n", vet_produtos[i].qtd);
+            printf("Valor: %.2f\n", vet_produtos[i].valor);
+        }
+        i++;
+    }
+
+    if (!encontrado)
+        printf("\nProduto nao encontrado.\n");
+}
+
+// 7 - Listar Produto
+void listarProduto()
+{
+    if (cont_produtos == 0)
+    {
+        printf("\nNenhum produto cadastrado.\n");
+        return;
+    }
+
+    int i = 0;
+    while (i < cont_produtos)
     {
         printf("\nCodigo: %d", vet_produtos[i].cod);
         printf("\nNome: %s", vet_produtos[i].nome_produto);
         printf("\nDescricao: %s", vet_produtos[i].descricao);
-        printf("\nValor: %.2f", vet_produtos[i].valor);
-        printf("\nQuantidade em estoque: %d", vet_produtos[i].qtd);
-        cont_p++;
+        printf("\nQuantidade: %d", vet_produtos[i].qtd);
+        printf("\nValor: %.2f\n", vet_produtos[i].valor);
+        i++;
     }
-    return cont_p;
 }
-// 8
-void excluirProduto(int *cont)
-{
-    produtos p;
-    int i, j, encontrado = 0, cod = 0;
 
-    printf("\nDigite o codigo do produto que deseja excluir: ");
+// 8 - Excluir Produto
+void excluirProduto()
+{
+    int cod, i = 0, encontrado = 0;
+    printf("Digite o codigo do produto a ser excluido: \n");
     scanf("%d", &cod);
-    for (i = 0; i < *cont; i++)
-    {
-        if (cod == vet_produtos[i].cod)
-        {
-            encontrado = 1;
-            for (j = i; j < *cont - 1;)
-            {
-                vet_produtos[j] = vet_produtos[j + 1];
-            }
-            (*cont)--;
-        }
-    }
-}
-// 9
-void comprarProduto()
-{
-    // verificar cliente ok
-    // verificar quantidade no estoque
-    // se tiver produto no estoque abater estoque
-    // verificar se o produto existe ok
+    fflush(stdin);
 
-    produtos p;
-    funcionarios f;
-    clientes c;
-    int i, j, quantidade = 0, escolha = 0;
-    char cpf[15], produto[30];
-    while (escolha != 2)
+    while (i < cont_produtos)
     {
-        printf("\nDigite o seu CPF: ");
-        gets(cpf);
-        fflush(stdin);
-        for (i = 0; i < TF; i++)
+        int igual = cod == vet_produtos[i].cod;
+        encontrado += igual;
+
+        int deslocar = 0;
+        while (deslocar < cont_produtos - i - 1 && igual)
         {
-            if (strcmp(cpf, vet_clientes[i].cpf) == 0)
-            {
-                printf("\nCPF encontrado, boas compras.");
-                printf("\nDigite o nome do produto que deseja: ");
-                gets(strlwr(produto));
-                fflush(stdin);
-                for (j = 0; j < TF; j++)
-                {
-                    if (strcmp(produto, vet_produtos[j].nome_produto) == 0)
-                    {
-                        printf("\nQuantidade em estoque: %d", vet_produtos[j].qtd);
-                        printf("\nDigite a quantidade que deseja: ");
-                        scanf("%d", &quantidade);
-                        if (quantidade > vet_produtos[j].qtd)
-                            printf("\nSem estoque suficiente.");
-                        else
-                            printf("\nCompra realizada com sucesso.");
-                        vet_produtos[j].qtd -= quantidade;
-                        printf("\nDeseja comprar mais produtos? ");
-                        printf("\n1 - Sim");
-                        printf("\n2 - Nao");
-                        scanf("%d", &escolha);
-                    }
-                    else
-                    {
-                        printf("\nProduto nao encontrado.");
-                    }
-                }
-            }
-            else
-                printf("CPF nao encontrado, cadastre-se e volte para a compra.");
+            vet_produtos[i + deslocar] = vet_produtos[i + deslocar + 1];
+            deslocar++;
         }
+        if (igual)
+            cont_produtos--;
+        i++;
     }
+
+    if (!encontrado)
+        printf("\nProduto nao encontrado.\n");
+    else
+        printf("\nProduto excluido com sucesso!\n");
 }
-// 10
-void cadastroFuncionario()
+
+// ------------------ FUNCIONARIOS ------------------
+
+// 10 - Cadastrar Funcionario
+void cadastrarFuncionario()
 {
     funcionarios f;
     int i = 1;
-    int j;
-    while (i != 2)
+    while (i != 2 && cont_funcionarios < TF)
     {
-        printf("Digite o nome do funcionario a ser cadastrado: \n");
+        printf("Digite o nome do funcionario: \n");
+        fflush(stdin);
         gets(f.nome);
-        fflush(stdin);
-        printf("Digite o E-mail do funcionario a ser cadastrado: \n");
-        gets(f.email);
-        fflush(stdin);
-        for (j = 0; j < TF; j++)
+
+        // Email
+        int emailValido = 0;
+        while (!emailValido)
         {
-            if (strcmp(f.email, vet_funcionarios[j].email) == 0)
+            printf("Digite o email do funcionario: \n");
+            fflush(stdin);
+            gets(f.email);
+
+            emailValido = 1;
+            int j = 0;
+            while (j < cont_funcionarios && emailValido)
             {
-                printf("E-mail ja cadastrado no sistema!!\n");
-                printf("Digite o E-mail do funcionario a ser cadastrado: \n");
-                gets(f.email);
-                fflush(stdin);
+                int igual = strcmp(f.email, vet_funcionarios[j].email) == 0;
+                emailValido = emailValido * !igual;
+                j++;
             }
+            if (!emailValido)
+                printf("Email ja cadastrado!\n");
         }
-        printf("Digite o CPF do funcionario a ser cadastrado: \n");
-        gets(f.cpf);
-        fflush(stdin);
-        for (j = 0; j < TF; j++)
+
+        // CPF
+        int cpfValido = 0;
+        while (!cpfValido)
         {
-            if (strcmp(f.cpf, vet_clientes[j].cpf) == 0)
+            printf("Digite o CPF do funcionario: \n");
+            fflush(stdin);
+            gets(f.cpf);
+
+            cpfValido = 1;
+            int j = 0;
+            while (j < cont_funcionarios && cpfValido)
             {
-                printf("CPF ja cadastrado no sistema!!\n");
-                printf("Digite o CPF do funcionario a ser cadastrado: \n");
-                gets(f.cpf);
-                fflush(stdin);
+                int igual = strcmp(f.cpf, vet_funcionarios[j].cpf) == 0;
+                cpfValido = cpfValido * !igual;
+                j++;
             }
+            if (!cpfValido)
+                printf("CPF ja cadastrado!\n");
         }
-        printf("Digite o Telefone do Funcionario: \n");
-        gets(f.tel);
-        fflush(stdin);
-        for (j = 0; j < TF; j++)
+
+        // Telefone
+        int telValido = 0;
+        while (!telValido)
         {
-            if (strlen(f.tel) < 11 || strlen(f.tel) > 14)
+            printf("Digite o telefone do funcionario: \n");
+            fflush(stdin);
+            gets(f.tel);
+
+            int tamanhoValido = (strlen(f.tel) >= 11 && strlen(f.tel) <= 14);
+            int telefoneDuplicado = 0;
+            int j = 0;
+            while (j < cont_funcionarios)
             {
-                printf("Telefone invalido. Cadastre como no Exemplo: (99)99999-9999 \n");
-                printf("Digite o Telefone do cliente a ser cadastrado!! \n");
-                gets(f.tel);
-                fflush(stdin);
+                telefoneDuplicado += (strcmp(f.tel, vet_funcionarios[j].tel) == 0);
+                j++;
             }
-            if (strcmp(f.tel, vet_funcionarios[j].tel) == 0)
-            {
-                printf("Telefone ja cadastrado. Tente novamente.\n");
-                printf("Digite o Telefone a ser cadastrado: \n");
-                gets(f.tel);
-                fflush(stdin);
-            }
+
+            telValido = tamanhoValido * (telefoneDuplicado == 0);
+            if (!telValido)
+                printf("Telefone invalido ou ja cadastrado.\n");
         }
+
         printf("Digite a senha do funcionario: \n");
-        gets(f.password);
         fflush(stdin);
-        vet_funcionarios[i] = f;
-        printf("\nFuncionario Cadastrado com Sucesso\n");
-        printf("\nDeseja cadastrar mais algum funcionario?");
-        printf("\n1 - Sim");
-        printf("\n2 - Nao");
+        gets(f.password);
+
+        vet_funcionarios[cont_funcionarios] = f;
+        cont_funcionarios++;
+        printf("\nFuncionario cadastrado com sucesso!\n");
+
+        printf("Deseja cadastrar mais funcionarios? 1-Sim 2-Nao\n");
         scanf("%d", &i);
+        fflush(stdin);
     }
 }
-// 11
-int listarFuncionario()
+
+// 11 - Listar Funcionarios
+void listarFuncionario()
 {
-    int i, cont_f;
-    funcionarios f;
-    for (i = 0; i < TF; i++)
+    if (cont_funcionarios == 0)
+    {
+        printf("\nNenhum funcionario cadastrado.\n");
+        return;
+    }
+
+    int i = 0;
+    while (i < cont_funcionarios)
     {
         printf("\nNome: %s", vet_funcionarios[i].nome);
         printf("\nEmail: %s", vet_funcionarios[i].email);
         printf("\nCPF: %s", vet_funcionarios[i].cpf);
         printf("\nTelefone: %s", vet_funcionarios[i].tel);
-        printf("\nSenha: %s", vet_funcionarios[i].password);
-        cont_f++;
+        printf("\nSenha: %s\n", vet_funcionarios[i].password);
+        i++;
     }
-    return cont_f;
 }
-// 12
+
+// 12 - Pesquisar Funcionario
 void pesquisarFuncionario()
 {
-    funcionarios f;
-    int i;
-    char buscar[15];
+    char buscar[12];
+    int i = 0, encontrado = 0;
     printf("Digite o CPF do funcionario: \n");
-    gets(buscar);
     fflush(stdin);
-    for (i = 0; i < TF; i++)
-    {
-        if (strcmp(buscar, vet_funcionarios[i].cpf) == 0)
-        {
-            printf("\nNome: %s", vet_funcionarios[i].nome);
-            printf("\nEmail: %s", vet_funcionarios[i].email);
-            printf("\nCPF: %s", f.cpf);
-            printf("\nTelefone: %s", vet_funcionarios[i].tel);
-            printf("\nSenha: %s", vet_funcionarios[i].password);
-        }
-    }
-}
-// 13
-void excluirFuncionario(int *cont)
-{
-    int i, j, encontrado = 0;
-    funcionarios f;
-    char buscar[15];
-    printf("\nDigite o CPF do funcionario que deseja excluir: ");
     gets(buscar);
-    fflush(stdin);
-    for (i = 0; i < *cont; i++)
+
+    while (i < cont_funcionarios)
     {
-        if (strcmp(buscar, vet_funcionarios[i].cpf) == 0)
+        int igual = strcmp(buscar, vet_funcionarios[i].cpf) == 0;
+        encontrado += igual;
+        if (igual)
         {
-            encontrado = 1;
-            for (j = i; j < *cont - 1; j++)
-            {
-                vet_funcionarios[j] = vet_funcionarios[j + 1];
-            }
-            (*cont)--;
+            printf("\nFuncionario encontrado:\n");
+            printf("Nome: %s\n", vet_funcionarios[i].nome);
+            printf("Email: %s\n", vet_funcionarios[i].email);
+            printf("CPF: %s\n", vet_funcionarios[i].cpf);
+            printf("Telefone: %s\n", vet_funcionarios[i].tel);
+            printf("Senha: %s\n", vet_funcionarios[i].password);
         }
+        i++;
     }
+
     if (!encontrado)
-        printf("\nCPF nao encontrado.");
-    else
-        printf("\nFunciario excluido com sucesso.");
+        printf("\nCPF nao encontrado.\n");
 }
 
-main()
+// 13 - Excluir Funcionario
+void excluirFuncionario()
 {
-    int op, cont_clientes = 0, cont_funcionarios = 0, cont_produtos = 0;
+    char buscar[12];
+    int i = 0, encontrado = 0;
+    printf("Digite o CPF do funcionario a ser excluido: \n");
+    fflush(stdin);
+    gets(buscar);
 
-    menu();
-    printf("\nEscolha a opcao: ");
-    scanf("%d", &op);
-    while (op != 14)
+    while (i < cont_funcionarios)
     {
+        int igual = strcmp(buscar, vet_funcionarios[i].cpf) == 0;
+        encontrado += igual;
+
+        int deslocar = 0;
+        while (deslocar < cont_funcionarios - i - 1 && igual)
+        {
+            vet_funcionarios[i + deslocar] = vet_funcionarios[i + deslocar + 1];
+            deslocar++;
+        }
+        if (igual)
+            cont_funcionarios--;
+        i++;
+    }
+
+    if (!encontrado)
+        printf("\nFuncionario nao encontrado.\n");
+    else
+        printf("\nFuncionario excluido com sucesso!\n");
+}
+
+// ------------------ MAIN ------------------
+int main()
+{
+    int op;
+    do
+    {
+        menu();
+        printf("Escolha a opcao: ");
+        scanf("%d", &op);
+        fflush(stdin);
+
         switch (op)
         {
         case 1:
-            cadastarClientes();
+            cadastrarClientes();
             break;
         case 2:
-            cont_clientes = listarClientes();
+            listarClientes();
             break;
         case 3:
             pesquisarCliente();
             break;
         case 4:
-            excluirCliente(&cont_clientes);
+            excluirCliente();
             break;
         case 5:
-            cadastroProduto();
+            cadastrarProduto();
             break;
         case 6:
             pesquisarProduto();
             break;
         case 7:
-            cont_produtos = listarProduto();
+            listarProduto();
             break;
         case 8:
-            excluirProduto(&cont_produtos);
-            break;
-        case 9:
-            comprarProduto();
+            excluirProduto();
             break;
         case 10:
-            cadastroFuncionario();
+            cadastrarFuncionario();
             break;
         case 11:
-            cont_funcionarios = listarFuncionario();
+            listarFuncionario();
             break;
-
         case 12:
             pesquisarFuncionario();
             break;
         case 13:
-            excluirFuncionario(&cont_funcionarios);
+            excluirFuncionario();
             break;
         case 14:
-            printf("\nSaindo...");
+            printf("\nSaindo...\n");
             break;
         default:
-            printf("\nValor invalido...");
+            printf("\nOpcao invalida.\n");
             break;
         }
+
         system("pause");
         system("cls");
-        menu();
-        printf("\nEscolha a opcao: ");
-        scanf("%d", &op);
-    }
+    } while (op != 14);
+
+    return 0;
 }
-//[]
