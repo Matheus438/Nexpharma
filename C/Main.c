@@ -435,22 +435,8 @@ void comprarProduto()
                     }
                     else
                     {
-                        valor *= quantidade;
-                        printf("\nTotal: %.2f", valor);
-                        printf("\nDeseja comprar? ");
-                        printf("\n1 - Sim");
-                        printf("\n2 - Nao");
-                        scanf("%d", &comprar);
-                        fflush(stdin);
-                        if (comprar == 1)
-                        {
                             printf("\nCompra realizada com sucesso.");
                             vet_produtos[j].qtd -= quantidade;
-                        }
-                        else
-                        {
-                            printf("\nCompra cancelada.");
-                        }
                     }
                 }
                 if (produtoencontrado == 0)
