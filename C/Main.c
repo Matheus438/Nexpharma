@@ -542,3 +542,70 @@ main()
     }
 }
 //[]
+
+/*
+    void menu_principal()
+{
+    printf("\nDeseja entra em qual conta?");
+    printf("\n1 - Administrador");
+    printf("\n2 - Cliente");
+    printf("\n3 - Sair");
+}
+
+void menu_administrador()
+{
+    printf("\n1 - Gerenciar Clientes");
+    printf("\n2 - Gerenciar Produtos");
+    printf("\n3 - Gerenciar Laboratorios");
+    printf("\n4 - Relatorios");
+    printf("\n5 - Voltar");
+}
+
+void menu_cliente()
+{ // INCREMENTAR MAIS COISAS
+    printf("\n1 - Produtos");
+    printf("\n2 - Produtos em Promocoes");
+    printf("\n3 - Voltar");
+}
+
+void menu_gerenciarClientes()
+{
+    printf("\nGerenciamento de Clientes");
+    printf("\n1 - Cadastrar");
+    printf("\n2 - Consultar");
+    printf("\n3 - Editar");
+    printf("\n4 - Excluir");
+    printf("\n5 - Voltar");
+}
+
+void menu_gerenciarProdutos()
+{
+    printf("\nGerenciamento de Produtos");
+    printf("\n1 - Cadastrar");
+    printf("\n2 - Consultar");
+    printf("\n3 - Editar");
+    printf("\n4 - Excluir");
+    printf("\n5 - Voltar");
+}
+
+void menu_gerenciarLaboratorios()
+{
+    printf("\nGerenciamento de Laboratorios");
+    printf("\n1 - Cadastrar");
+    printf("\n2 - Consultar");
+    printf("\n3 - Editar");
+    printf("\n4 - Excluir");
+    printf("\n5 - Voltar");
+}
+
+void menu_relatorios()
+{
+    printf("\nMenu de Relatorios");
+    printf("\n1 - Relatorio de produtos com estoque zerado.");
+    printf("\n2 - Relatorio de Vendas por Cliente.");
+    printf("\n3 - Relatorio de Vendas por Periodo.");
+    printf("\n4 - Relatorio de produtos proximos ao vencimento.");
+    printf("\n5 - Voltar");
+}
+
+*/
